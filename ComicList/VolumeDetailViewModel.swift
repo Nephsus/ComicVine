@@ -56,13 +56,17 @@ final class VolumeDetailViewModel {
     
     private(set) lazy var issues: Observable<[IssueViewModel]> = self.webClient
         .load(resource: Volume.issues(withIdentifier: 333))
-        .debug()
-        .map{prueba in
-             print("llego toma que toma \(prueba.results[0].identifier)")
-             return [ IssueViewModel(title: "Lorem fistrum",
-                                     coverURL: URL(string: "http://static.comicvine.com/uploads/scale_small/3/38919/1251093-thanos_imperative_1.jpg"))]
+        .map{
+            var issues : [ IssueViewModel ] = []
+            $0.results.forEach{volume in
+                issues.append( IssueViewModel(title: volume.title,
+                                              coverURL: volume.coverURL ))
+            }
+            return issues
             
-        }
+        }.startWith([IssueViewModel]())
+         .observeOn(MainScheduler.instance)
+         .shareReplay(1)
     
 
     
