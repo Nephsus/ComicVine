@@ -27,6 +27,21 @@ public protocol JSONValueDecodable {
 	init?(jsonValue: Value)
 }
 
+
+extension String {
+    
+    static  public func transformNilValue(withValue rawValue: Any) -> String{
+        
+        if( rawValue is NSNull ){
+            return "" 
+        }
+        
+        return rawValue as! String
+    }
+ 
+}
+
+
 extension JSONValueDecodable where Self: RawRepresentable {
 
 	public init?(jsonValue: Self.RawValue) {
@@ -39,6 +54,7 @@ extension URL: JSONValueDecodable {
 		self.init(string: jsonValue)
 	}
 }
+
 
 public func decode<T: JSONDecodable>(jsonDictionary: JSONDictionary) throws -> T {
 	return try T(jsonDictionary: jsonDictionary)
@@ -65,10 +81,14 @@ public func unpack<T>(from jsonDictionary: JSONDictionary, key: String) throws -
 		throw JSONError.notFound(key)
 	}
     
-    if rawValue == nil{
-       rawValue = ""
+
+    if T.self == String.self{
+        rawValue = String.transformNilValue(withValue: rawValue)
     }
+    
+
 	guard let value = rawValue as? T else {
+         print("otro massss+++++++++++++++++++++++++++++++++ \(type(of: rawValue) )  \(type(of: T.self) )" )
 		throw JSONError.invalidValue(rawValue, key)
 	}
 
@@ -76,14 +96,19 @@ public func unpack<T>(from jsonDictionary: JSONDictionary, key: String) throws -
 }
 
 public func unpack<T: JSONValueDecodable>(from jsonDictionary: JSONDictionary, keyPath: String) throws -> T {
-	guard let rawValue = (jsonDictionary as NSDictionary).value(forKeyPath: keyPath) else {
+	
+    guard let rawValue = (jsonDictionary as NSDictionary).value(forKeyPath: keyPath) else {
 		throw JSONError.notFound(keyPath)
 	}
 
-	guard
-		let value = rawValue as? T.Value,
+	guard let value = rawValue as? T.Value,
 		let decodedValue = T(jsonValue: value) else {
-		throw JSONError.invalidValue(rawValue, keyPath)
+        
+        print("lere lere+++++++++++++\(  type(of: rawValue) ) ")
+          
+           
+                throw JSONError.invalidValue(rawValue, keyPath)
+          
 	}
 
 	return decodedValue
