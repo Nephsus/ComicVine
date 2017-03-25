@@ -42,20 +42,12 @@ final class VolumeDetailViewModel {
 		.observeOn(MainScheduler.instance)
 		.shareReplay(1)
 
-	/// The issues for this volume
-	/*private(set) var issues: Observable<[IssueViewModel]> = Observable.just([
-		IssueViewModel(title: "Lorem fistrum", coverURL: URL(string: "http://static.comicvine.com/uploads/scale_small/3/38919/1251093-thanos_imperative_1.jpg")),
-		IssueViewModel(title: "Quietooor ahorarr", coverURL: URL(string: "http://static.comicvine.com/uploads/scale_small/0/9116/1299822-296612.jpg")),
-		IssueViewModel(title: "Apetecan", coverURL: URL(string: "http://static.comicvine.com/uploads/scale_small/5/57845/1333458-cover.jpg")),
-		IssueViewModel(title: "Rodrigor mamaar", coverURL: URL(string: "http://static.comicvine.com/uploads/scale_small/5/56213/1386494-thanos_imperative__4.jpg")),
-		IssueViewModel(title: "Benemeritaar", coverURL: URL(string: "http://static.comicvine.com/uploads/scale_small/3/38919/1452486-thanos_imperative_5.jpg")),
-		IssueViewModel(title: "Caballo blanco caballo negroorl", coverURL: URL(string: "http://static.comicvine.com/uploads/scale_small/3/38919/1503818-thanos_imperative_6.jpg")),
-		IssueViewModel(title: "Quietooor diodeno", coverURL: URL(string: "http://static.comicvine.com/uploads/scale_small/3/39027/4609736-4608485-cgxpqgqw0aao_8t+-+copy.jpg"))
-	])*/
+	
     
     
     private(set) lazy var issues: Observable<[IssueViewModel]> = self.webClient
-        .load(resource: Volume.issues(withIdentifier: 333))
+        .load(resource: Volume.issues(withIdentifier: self.volume.identifier))
+       
         .map{
             var issues : [ IssueViewModel ] = []
             $0.results.forEach{volume in
@@ -64,11 +56,11 @@ final class VolumeDetailViewModel {
             }
             return issues
             
-        }.startWith([IssueViewModel]())
-         .observeOn(MainScheduler.instance)
-         .shareReplay(1)
+        }
+        .startWith([IssueViewModel]())
+        .observeOn(MainScheduler.instance)
+        .shareReplay(1)
     
-
     
     
     

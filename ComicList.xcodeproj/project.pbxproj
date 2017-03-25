@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1245AB692F1A1009CB8C7C8A /* Pods_App_ImageLoader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B5ACA11664CAB306003790 /* Pods_App_ImageLoader.framework */; };
-		638668EA1E826EE200036CCE /* NilProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638668E91E826EE200036CCE /* NilProtocol.swift */; };
-		638668EC1E826F4E00036CCE /* String+NilProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638668EB1E826F4E00036CCE /* String+NilProtocol.swift */; };
+		5B20910D1E859FDF00F09C55 /* String+NilTransformProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B20910C1E859FDF00F09C55 /* String+NilTransformProtocol.swift */; };
+		638668EA1E826EE200036CCE /* NilTransformProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638668E91E826EE200036CCE /* NilTransformProtocol.swift */; };
 		823B965D1E48D51000C19057 /* WebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823B965C1E48D51000C19057 /* WebClient.swift */; };
 		823B965E1E48D99300C19057 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E2E0FF1E48C43400D5986C /* Networking.framework */; };
 		823B96621E48D9BF00C19057 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823B96611E48D9BF00C19057 /* ImageCache.swift */; };
@@ -104,13 +104,13 @@
 /* Begin PBXFileReference section */
 		1CEB1E835A57CB79B75A82DF /* Pods-App-ImageLoader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-ImageLoader.release.xcconfig"; path = "Pods/Target Support Files/Pods-App-ImageLoader/Pods-App-ImageLoader.release.xcconfig"; sourceTree = "<group>"; };
 		2636FBF35B323B0DD8EE8A6E /* Pods-App-Networking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Networking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-App-Networking/Pods-App-Networking.debug.xcconfig"; sourceTree = "<group>"; };
+		5B20910C1E859FDF00F09C55 /* String+NilTransformProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+NilTransformProtocol.swift"; path = "../ComicList/String+NilTransformProtocol.swift"; sourceTree = "<group>"; };
 		5B46B0491E79CC3600724812 /* prueba.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = prueba.h; sourceTree = "<group>"; };
 		5B46B04A1E79CC3600724812 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B46B0561E79CC3600724812 /* pruebaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pruebaTests.swift; sourceTree = "<group>"; };
 		5B46B0581E79CC3600724812 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D2B7D35B7CA654C048282A1 /* Pods_App_ComicList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App_ComicList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		638668E91E826EE200036CCE /* NilProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NilProtocol.swift; path = ../ComicList/NilProtocol.swift; sourceTree = "<group>"; };
-		638668EB1E826F4E00036CCE /* String+NilProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+NilProtocol.swift"; path = "../ComicList/String+NilProtocol.swift"; sourceTree = "<group>"; };
+		638668E91E826EE200036CCE /* NilTransformProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NilTransformProtocol.swift; path = ../ComicList/NilTransformProtocol.swift; sourceTree = "<group>"; };
 		64B5ACA11664CAB306003790 /* Pods_App_ImageLoader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App_ImageLoader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		823B965C1E48D51000C19057 /* WebClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebClient.swift; sourceTree = "<group>"; };
 		823B96611E48D9BF00C19057 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
@@ -259,8 +259,8 @@
 		823B965A1E48D30E00C19057 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				638668E91E826EE200036CCE /* NilProtocol.swift */,
-				638668EB1E826F4E00036CCE /* String+NilProtocol.swift */,
+				5B20910C1E859FDF00F09C55 /* String+NilTransformProtocol.swift */,
+				638668E91E826EE200036CCE /* NilTransformProtocol.swift */,
 				82E2E11D1E48C7DF00D5986C /* Resource.swift */,
 				823B965C1E48D51000C19057 /* WebClient.swift */,
 				82C42C4D1E745FE3008B891B /* JSONDecodable.swift */,
@@ -838,13 +838,13 @@
 				82E2E0E81E48C20800D5986C /* AppDelegate.swift in Sources */,
 				82A65E851E4A2449008C4332 /* VolumeViewModel.swift in Sources */,
 				823B966A1E48DE0100C19057 /* Coordinator.swift in Sources */,
-				638668EC1E826F4E00036CCE /* String+NilProtocol.swift in Sources */,
-				638668EA1E826EE200036CCE /* NilProtocol.swift in Sources */,
+				638668EA1E826EE200036CCE /* NilTransformProtocol.swift in Sources */,
 				827872F61E4B881B00E80204 /* SuggestionsCoordinator.swift in Sources */,
 				827872F31E4B874C00E80204 /* SuggestionsViewController.swift in Sources */,
 				823B96701E48DEE700C19057 /* UITableView+Reusable.swift in Sources */,
 				82A65EAA1E4A339A008C4332 /* VolumeDetailCoordinator.swift in Sources */,
 				827872F01E4B85DB00E80204 /* SuggestionsViewModel.swift in Sources */,
+				5B20910D1E859FDF00F09C55 /* String+NilTransformProtocol.swift in Sources */,
 				82A65EA21E4A31B0008C4332 /* VolumeIssuesView.swift in Sources */,
 				82A65EA01E4A3165008C4332 /* VolumeAboutView.swift in Sources */,
 				823B96741E48DF8B00C19057 /* UIColor+Darkening.swift in Sources */,

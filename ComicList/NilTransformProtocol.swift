@@ -9,10 +9,6 @@
 import Foundation
 
 
-public protocol NilProtocol {
-
-
-     static func transformNilValue<T>(withValue rawValue: Any) -> T
-    
-
-}
+/*public protocol NilTransformProtocol {
+    static func transformNilValueToRawValue<T>(withValue rawValue: Any) -> T
+}*/

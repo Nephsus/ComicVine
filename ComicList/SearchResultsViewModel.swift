@@ -13,7 +13,7 @@ import Networking
 extension VolumeViewModel {
 
 	init(volume: Volume) {
-		identifier = volume.identifier
+		identifier = volume.identifier.int64Value
 		title = volume.title
 		coverURL = volume.coverURL
 		publisherName = nil

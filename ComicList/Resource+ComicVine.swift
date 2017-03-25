@@ -9,7 +9,7 @@
 import Foundation
 import Networking
 
-let apiKey = "75d580a0593b7320727309feb6309f62def786cd"
+let apiKey = "4c2f7f8c0970eb7da39688593fe0908c20d6a4a1"
 private let apiURL = URL(string: "http://www.comicvine.com/api")!
 
 extension Resource where M: JSONDecodable {

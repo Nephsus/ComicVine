@@ -10,7 +10,7 @@ import Foundation
 import Networking
 
 struct Volume {
-	let identifier: Int64
+	let identifier: NSNumber
 	let title: String
 	let coverURL: URL?
 	let description: String?
@@ -48,7 +48,7 @@ extension Volume {
 			parameters: [
 				"api_key": apiKey,
 				"format": "json",
-				"field_list": "id,image,name",
+				//"field_list": "id,image,name",
 				"limit": "20",
 				"page": String(page),
 				"query": query,
@@ -59,7 +59,7 @@ extension Volume {
 
 	public static func detail(withIdentifier identifier: Int64) -> Resource<Response<Volume>> {
 		return Resource(
-			comicVinePath: "volume/4050-99902",
+			comicVinePath: "volume/4050-\(identifier)" ,
 			parameters: [
 				"api_key": apiKey,
 				"format": "json",
@@ -75,7 +75,7 @@ extension Volume {
                 "api_key": apiKey,
                 "format": "json",
                 "field_list": "id,image,name,volume",
-                "filter": "volume:33509"
+                "filter": "volume:\(identifier)"
                 ]
         )
     }

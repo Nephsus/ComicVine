@@ -28,17 +28,19 @@ public protocol JSONValueDecodable {
 }
 
 
-extension String {
-    
-    static  public func transformNilValue(withValue rawValue: Any) -> String{
-        
+public protocol NilTransformProtocol {
+    static func transformNilValueToRawValue<T>(withValue rawValue: Any) -> T
+}
+
+
+extension String : NilTransformProtocol {
+    public static func transformNilValueToRawValue<T>(withValue rawValue: Any) -> T{
         if( rawValue is NSNull ){
-            return "" 
+            return "" as! T
         }
-        
-        return rawValue as! String
+        return rawValue as! T
     }
- 
+    
 }
 
 
@@ -54,6 +56,7 @@ extension URL: JSONValueDecodable {
 		self.init(string: jsonValue)
 	}
 }
+
 
 
 public func decode<T: JSONDecodable>(jsonDictionary: JSONDictionary) throws -> T {
@@ -83,12 +86,12 @@ public func unpack<T>(from jsonDictionary: JSONDictionary, key: String) throws -
     
 
     if T.self == String.self{
-        rawValue = String.transformNilValue(withValue: rawValue)
+        rawValue = String.transformNilValueToRawValue(withValue: rawValue)
     }
     
 
 	guard let value = rawValue as? T else {
-         print("otro massss+++++++++++++++++++++++++++++++++ \(type(of: rawValue) )  \(type(of: T.self) )" )
+         print("otro massss+++++++++++++++++++++++++++++++++ \(key) \(type(of: rawValue) )  \(type(of: T.self) )" )
 		throw JSONError.invalidValue(rawValue, key)
 	}
 
